@@ -74,6 +74,7 @@ ITEM_PIPELINES = {
    "lab2.pipelines.CleanTitlePipeline": 200,
    "lab2.pipelines.PricePipeline": 300,
    "lab2.pipelines.MongoDBPipeline": 500,
+   'lab2.pipelines.SaveToAPIPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -1,6 +1,15 @@
 from scrapy.exceptions import DropItem
 from re import search
 import pymongo
+import requests
+
+class SaveToAPIPipeline:
+    def process_item(self, item, spider):
+        response = requests.post("http://localhost:3000/books", json=dict(item))
+        if response.status_code != 201:
+            spider.logger.error(f"Failed to save item: {response.text}")
+        return item
+
 
 class MongoDBPipeline:
     collection_name = 'books'
